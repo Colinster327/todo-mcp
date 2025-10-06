@@ -11,3 +11,6 @@ wheels/
 
 # db
 db.sqlite3
+
+# environment variables
+.env
