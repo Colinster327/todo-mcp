@@ -22,9 +22,6 @@ uv sync
 
 2. Create environment file:
 ```bash
-# Copy the example file
-cp .env.example .env
-
 # Edit .env with your settings:
 # - OPENAI_API_KEY: Your OpenAI API key (for client/openai_client.py)
 # - ANTHROPIC_API_KEY: Your Anthropic API key (for client/mcp_client.py)  
