@@ -5,11 +5,13 @@ A Model Context Protocol (MCP) server for managing todo lists with SQLite3 stora
 ## Features
 
 - ✅ **Full CRUD Operations**: Create, read, update, and delete todos
-- 🗃️ **SQLite3 Storage**: Persistent data storage in `~/.todo_mcp.db`
+- 🗃️ **SQLite3 Storage**: Persistent data storage in `db.sqlite3`
 - 🏷️ **Priority Levels**: Low, medium, and high priority todos
 - 📅 **Due Dates**: Optional due date support
 - 🔍 **Filtering**: Filter todos by completion status and priority
 - 📊 **Rich Display**: Emoji-enhanced output for better readability
+- 🤖 **AI Clients**: Ready-to-use clients for OpenAI and Anthropic models
+- 🌐 **SSE Transport**: Server-Sent Events for real-time communication
 
 ## Installation
 
@@ -18,11 +20,16 @@ A Model Context Protocol (MCP) server for managing todo lists with SQLite3 stora
 uv sync
 ```
 
-2. Create environment file (optional):
+2. Create environment file:
 ```bash
-# Create .env file with your preferred settings
-echo "HOST=localhost" > .env
-echo "PORT=8000" >> .env
+# Copy the example file
+cp .env.example .env
+
+# Edit .env with your settings:
+# - OPENAI_API_KEY: Your OpenAI API key (for client/openai_client.py)
+# - ANTHROPIC_API_KEY: Your Anthropic API key (for client/mcp_client.py)  
+# - HOST: Server host (default: localhost)
+# - PORT: Server port (default: 8001)
 ```
 
 3. Run the server:
@@ -30,7 +37,41 @@ echo "PORT=8000" >> .env
 python src/server.py
 ```
 
-The server will run on `http://localhost:8000` by default (or use HOST/PORT from .env file).
+The server will run on `http://localhost:8001` by default (or use HOST/PORT from .env file).
+
+## Quick Start
+
+See [QUICKSTART.md](QUICKSTART.md) for a step-by-step guide to getting started!
+
+## Using the AI Clients
+
+This project includes two AI client implementations that connect to the MCP server:
+
+### OpenAI Client (GPT-4)
+```bash
+# Interactive mode
+python client/openai_client.py
+
+# Single query mode
+python client/openai_client.py "Create a todo to buy groceries"
+```
+
+### Anthropic Client (Claude)
+```bash
+# Interactive mode  
+python client/mcp_client.py
+
+# Single query mode
+python client/mcp_client.py "List my todos"
+```
+
+### Example Usage
+```bash
+# Run the example script
+python client/example.py
+```
+
+See [client/README.md](client/README.md) for detailed client documentation.
 
 ## Available Tools
 
